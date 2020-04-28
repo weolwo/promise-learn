@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>promise的几个关键问题1</title>
+  <title>promise的几个关键问题</title>
 </head>
 <body>
   <script>
@@ -17,22 +17,6 @@
     2.	一个promise指定多个成功/失败回调函数, 都会调用吗?
       当promise改变为对应状态时都会调用
     */
-
-    const p = new Promise((resolve, reject) => {
-      // resolve(1) // promise变为resolved成功状态
-      // reject(2) // promise变为rejected失败状态
-      // throw new Error('出错了') // 抛出异常, promse变为rejected失败状态, reason为 抛出的error
-      throw 3 // 抛出异常, promse变为rejected失败状态, reason为 抛出的3
-    })
-    p.then(
-      value => {},
-      reason => {console.log('reason', reason)}
-    )
-    p.then(
-      value => {},
-      reason => {console.log('reason2', reason)}
-    )
-
     
   </script>
 </body>

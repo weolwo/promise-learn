@@ -16,19 +16,6 @@
       理解: 不会立即执行, 会放入回调队列中将来执行
       例子: 定时器回调 / ajax回调 / Promise的成功|失败的回调
     */
-
-    // 1. 同步回调函数
-    // const arr = [1, 3, 5]
-    arr.forEach(item => { // 遍历回调, 同步回调函数, 不会放入列队, 一上来就要执行完
-      console.log(item)
-    })
-    console.log('forEach()之后')
-
-    // 2. 异步回调函数
-    setTimeout(() => { // 异步回调函数, 会放入队列中将来执行
-      console.log('timout callback()')
-    }, 0)
-    console.log('setTimeout()之后')
   </script>
 </body>
 </html>
