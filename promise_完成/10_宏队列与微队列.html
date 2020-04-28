@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10_宏队列与微队列</title>
+</head>
+<body>
+  <script>
+    setTimeout(() => { // 会立即放入宏列队
+      console.log('timeout callback1()')
+      Promise.resolve(3).then(
+        value => { // 会立即放入微列队
+          console.log('Promise onResolved3()', value)
+        }
+      )
+    }, 0)
+    setTimeout(() => { // 会立即放入宏列队
+      console.log('timeout callback2()')
+    }, 0)
+    Promise.resolve(1).then(
+      value => { // 会立即放入微列队
+        console.log('Promise onResolved1()', value)
+      }
+    ) 
+    Promise.resolve(2).then(
+      value => { // 会立即放入微列队
+        console.log('Promise onResolved2()', value)
+      }
+    ) 
+  </script>
+</body>
+</html>

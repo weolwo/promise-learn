@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="./js/jquery-3.4.1.js"></script>
+<body>
+<!--<script src="./05_为什么要用Promise.js"></script>-->
+<!--<script src="./07_promise的几个关键问题.js"></script>-->
+</body>
+</html>
+
+<script>
+    setTimeout(() => {
+        console.log('setTimeout1')
+        Promise.resolve(3).then(value => {
+            console.log('onResolved3', value)
+        })
+    })
+
+    setTimeout(() => {
+        console.log('setTimeout2')
+    })
+
+    Promise.resolve(1).then(value => {
+        console.log('onResolved1', value)
+    })
+
+    Promise.resolve(2).then(value => {
+        console.log('onResolved2', value)
+    })
+</script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>08_自定义Promise</title>
+</head>
+<script src=./lib/promise_class.js></script>
+<body>
+<!--<script>
+    const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(1)
+            console.log('resolve改变状态之后') // 用来证明resolve(1)函数异步执行
+        })
+    });
+
+    p.then(value => {
+        console.log('value1', value)
+    }, reason => {
+        console.log('reason1', reason)
+    })
+    p.then(value => {
+        console.log('value2', value)
+    }, reason => {
+        console.log('reason2', reason)
+    })
+</script>-->
+<!--<script>
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            //resolve(1)
+            reject(2)
+        })
+    }).then(value => {
+        console.log('value1', value)
+    }, reason => {
+        console.log('reason1', reason)
+        //return 3
+        return new Promise((resolve, reject) => reject(5))
+    }).then(value => {
+        console.log('value2', value)
+    }, reason => {
+        console.log('reason2', reason)
+        throw 6
+    }).catch(e => {
+        console.log('reason3', e)
+        return new Promise((resolve, reject) => { // 中断promise链
+        })
+    }).then(value => {
+        console.log('value3', value)
+    }, reason => {
+        console.log('reason4', reason)
+    })
+</script>-->
+<script>
+    let p1 = Promise.resolve(1);
+    let p2 = Promise.resolve(Promise.resolve(2));
+    let p3 = Promise.reject(3);
+    let p4 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(4)
+        }, 1000)
+    })
+
+    /* p1.then(value => {
+         console.log('p1', value)
+     })
+
+     p2.then(value => { // 执行 onfulfilled()回调函数,官方名字
+         console.log('p2', value)
+     })
+
+     p3.catch(error => { // 执行 onfulfilled()回调函数,官方名字
+         console.log('p3', error)
+     })*/
+     let all = Promise.all([p4,9, p1, p2]);
+     all.then(
+         value => {
+             console.log(value)
+         },
+         reason => {
+             console.log(reason)
+         })
+
+   /* let race = Promise.race([p4, 9,p1, p2]);
+    race.then(
+        value => {
+            console.log(value)
+        },
+        reason => {
+            console.log(reason)
+        })*/
+</script>
+</body>
+
+</html>
