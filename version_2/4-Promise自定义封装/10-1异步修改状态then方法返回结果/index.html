@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise-封装 | 10 - 异步任务 then 返回结果</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+    <script>
+        //实例化对象
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('OK');
+                reject("Error");
+            }, 1000)
+        });
+
+        //执行 then 方法
+        const res = p.then(value => {
+            // return 'oh Yeah';
+            throw 'error';
+        }, reason=>{
+            // console.warn(reason);
+            throw 'error';
+        });
+
+        console.log(res);
+    </script>
+</body>
+</html>

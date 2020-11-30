@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise关键问题 - 如何串联多个任务</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('OK');
+            }, 1000);
+        });
+
+        p.then(value => {
+            return new Promise((resolve, reject) => {
+                resolve("success");
+            });
+        }).then(value => {
+            console.log(value);
+        }).then(value => {
+            console.log(value);
+        })
+    </script>
+</body>
+</html>

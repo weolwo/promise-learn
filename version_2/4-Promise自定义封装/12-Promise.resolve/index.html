@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise-封装 | 12 - Promise.resolve 封装</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+    <script>
+        const p = Promise.resolve('OK');
+        const p2 = Promise.resolve(new Promise((resolve, reject) => {
+            // resolve('Success');
+            reject("error");
+        }));
+        const p3 = Promise.resolve(Promise.resolve('Oh Yeah'));
+
+        console.log(p3);
+    </script>
+</body>
+</html>

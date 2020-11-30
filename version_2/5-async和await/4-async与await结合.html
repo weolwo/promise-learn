@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async与await结合发送AJAX</title>
+</head>
+<body>
+    <button id="btn">点击获取段子</button>
+    <script>
+        //axios
+        function sendAJAX(url){
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.responseType = 'json';
+                xhr.open("GET", url);
+                xhr.send();
+                //处理结果
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4){
+                        //判断成功
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            //成功的结果
+                            resolve(xhr.response);
+                        }else{
+                            reject(xhr.status);
+                        }
+                    }
+                }
+            });
+        }
+
+        //段子接口地址 https://api.apiopen.top/getJoke
+        let btn = document.querySelector('#btn');
+
+        btn.addEventListener('click',async function(){
+            //获取段子信息
+            let duanzi = await sendAJAX('https://api.apiopen.top/getJoke');
+            console.log(duanzi);
+        });
+    </script>
+</body>
+</html>

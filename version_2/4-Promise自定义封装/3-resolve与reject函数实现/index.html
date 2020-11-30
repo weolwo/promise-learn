@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise-封装 | 2 - resolve 与 reject </title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            // resolve('OK');
+            reject("error");
+        });
+
+        console.log(p);
+
+        // p.then(value => {
+        //     console.log(value);
+        // }, reason=>{
+        //     console.warn(reason);
+        // })
+    </script>
+</body>
+</html>

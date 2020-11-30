@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise-封装 | 4 - throw 抛出异常改变状态 </title>
+    <!-- <script src="./promise.js"></script> -->
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            // resolve('OK');
+            // reject("error");
+            //抛出异常
+            throw "error";
+        });
+
+        console.log(p);
+
+        // p.then(value => {
+        //     console.log(value);
+        // }, reason=>{
+        //     console.warn(reason);
+        // })
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise-封装 | 16 - 回调函数『异步执行』</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+    <script>
+        let p1 = new Promise((resolve, reject) => {
+            reject('OK');
+            console.log(111);
+        });
+
+        p1.then(value => {
+            console.log(222);
+        }, reason => {
+            console.log(444);
+        });
+
+        console.log(333);
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise关键问题 - Promise 指定多个回调</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            // resolve('OK');
+        });
+
+        ///指定回调 - 1
+        p.then(value => {
+            console.log(value);
+        });
+
+        //指定回调 - 2
+        p.then(value => {
+            alert(value);
+        });
+    </script>
+</body>
+</html>

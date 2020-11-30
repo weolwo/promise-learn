@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise API</title>
+</head>
+<body>
+    <script>
+        //
+        let p = new Promise((resolve, reject) => {
+            // ** 同步调用
+            // console.log(111);
+            //修改 promise 对象的状态
+            reject('error');
+        });
+
+        // console.log(222);
+
+        //执行 catch 方法
+        p.catch(reason => {
+            console.log(reason);
+        });
+    </script>
+</body>
+</html>

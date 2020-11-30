@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise关键问题 - Promise then方法的返回结果特点</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            resolve('ok');
+        });
+        //执行 then 方法
+        let result = p.then(value => {
+            // console.log(value);
+            //1. 抛出错误
+            // throw '出了问题';
+            //2. 返回结果是非 Promise 类型的对象
+            // return 521;
+            //3. 返回结果是 Promise 对象
+            // return new Promise((resolve, reject) => {
+            //     // resolve('success');
+            //     reject('error');
+            // });
+        }, reason => {
+            console.warn(reason);
+        });
+
+        console.log(result);
+    </script>
+</body>
+</html>
