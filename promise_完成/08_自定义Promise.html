@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>08_自定义Promise</title>
+</head>
+
+<body>
+  <script src="./lib/Promise_class.js"></script>
+  <!-- <script>
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // resolve(1)
+        reject(2)
+        console.log('reject()改变状态之后')
+      }, 100);
+    })
+    p.then(
+      value => {
+        console.log('onResolved1()', value)
+      },
+      reason => {
+        console.log('onRejected1()', reason)
+      }
+    )
+    p.then(
+      value => {
+        console.log('onResolved2()', value)
+      },
+      reason => {
+        console.log('onRejected2()', reason)
+      }
+    )
+    
+  </script> -->
+<!-- 
+  <script>
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(1)
+        // reject(2)
+      }, 100);
+    }).then(
+      value => {
+        console.log('onResolved1()', value)
+      },
+      reason => {
+        console.log('onRejected1()', reason)
+        // return 3
+        // throw 4
+        return new Promise((resolve, reject) => reject(5))
+      }
+    ).then(
+      value => {
+        console.log('onResolved2()', value)
+      },
+      reason => {
+        console.log('onRejected2()', reason)
+        throw 6
+      }
+    ).catch(reason => {
+      console.log('onRejected3()', reason)
+      return new Promise(() => {})  // 中断proimise链
+    }).then(
+      value => {
+        console.log('onResolved4()', value)
+      },
+      reason => {
+        console.log('onRejected4()', reason)
+        throw 6
+      }
+    )
+    
+  </script> -->
+
+  <script>
+    const p1 = Promise.resolve(2) // 如果是一般值, p1成功, value就是这个值
+    const p2 = Promise.resolve(Promise.resolve(3)) // 如果是成功的promise, p2成功, value是这个promise的value
+    const p3 = Promise.resolve(Promise.reject(4)) // 如果是失败的promise, p3失败, reason是这个promise的reason
+    // p1.then(value => {console.log('p1', value)})
+    // p2.then(value => {console.log('p2', value)})
+    // p3.catch(reason => {console.log('p3', reason)})
+
+    // const p4 = new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve(5)
+    //   }, 1000);
+    // })
+    const p4 = Promise.resolveDelay(5, 1000)
+    const p5 = Promise.reject(6)
+    
+    const pAll = Promise.all([p4, 7, p1, p2])
+    pAll.then(
+      values => {
+          console.log('race onResolved()', values)
+      },
+      reason => {
+          console.log('race onRejected()', reason)
+      }
+    )
+
+    // const pRace = Promise.race([p4, 7, p5, p2, p3])
+    // pRace.then(
+    //   value => {
+    //       console.log('race onResolved()', value)
+    //   },
+    //   reason => {
+    //       console.log('race onRejected()', reason)
+    //   }
+    // )
+
+    const p6 = Promise.resolveDelay(66, 2000)
+    const p7 = Promise.rejectDelay(77, 3000)
+    p6.then(value => {console.log('p6', value)})
+    p7.catch(reason => {console.log('p7', reason)})
+  </script>
+</body>
+
+</html>
